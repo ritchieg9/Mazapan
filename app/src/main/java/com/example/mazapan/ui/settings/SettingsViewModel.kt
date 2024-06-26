@@ -1,13 +1,13 @@
-package com.example.mazapan.ui.slideshow
+package com.example.mazapan.ui.settings
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class SlideshowViewModel : ViewModel() {
+class SettingsViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is slideshow Fragment"
+        value = "Settings Fragment"
     }
     val text: LiveData<String> = _text
 }
