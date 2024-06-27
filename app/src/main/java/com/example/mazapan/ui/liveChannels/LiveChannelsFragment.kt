@@ -10,8 +10,8 @@ import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.example.mazapan.R
 import com.example.mazapan.databinding.FragmentChannelsBinding
-import com.example.mazapan.ui.liveChannels.Services.FirstFragment
-import com.example.mazapan.ui.liveChannels.Services.SecondFragment
+import com.example.mazapan.ui.liveChannels.Services.ClaroFragment
+import com.example.mazapan.ui.liveChannels.Services.FuboFragment
 import com.google.android.material.tabs.TabLayout
 import com.google.android.material.tabs.TabLayoutMediator
 
@@ -30,21 +30,8 @@ class LiveEventsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val liveChannelsViewModel =
-            ViewModelProvider(this).get(LiveChannelsViewModel::class.java)
-
         _binding = FragmentChannelsBinding.inflate(inflater, container, false)
         val root: View = binding.root
-
-//        val textView: TextView = binding.textHome
-//        liveEventsViewModel.text.observe(viewLifecycleOwner) {
-//            textView.text = it
-//        }
-//
-//        val texSwitch: TextView = binding.textSwitch
-//        liveEventsViewModel.switch.observe(viewLifecycleOwner) {
-//            texSwitch.text = it
-//        }
         return root
     }
 
@@ -54,8 +41,8 @@ class LiveEventsFragment : Fragment() {
         mViewPager = view.findViewById(R.id.viewPager2)
 
         val adapter = BookcaseViewPagerAdapter(this)
-        adapter.addFragment(FirstFragment())
-        adapter.addFragment(SecondFragment())
+        adapter.addFragment(ClaroFragment())
+        adapter.addFragment(FuboFragment())
         mViewPager?.adapter = adapter
 
         tabLayout?.let { tabs->
@@ -65,7 +52,7 @@ class LiveEventsFragment : Fragment() {
                     TabLayoutMediator.TabConfigurationStrategy { tab: TabLayout.Tab, position: Int ->
                         when (position) {
                             0 -> tab.text = "Claro"
-                            1 -> tab.text = "DGo"
+                            1 -> tab.text = "Fubo"
                         }
                     }).attach()
 
