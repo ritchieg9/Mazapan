@@ -40,7 +40,7 @@ class LiveEventsFragment : Fragment() {
         tabLayout = view.findViewById(R.id.tab_layout)
         mViewPager = view.findViewById(R.id.viewPager2)
 
-        val adapter = BookcaseViewPagerAdapter(this)
+        val adapter = LiveChannelsViewPagerAdapter(this)
         adapter.addFragment(ClaroFragment())
         adapter.addFragment(FuboFragment())
         mViewPager?.adapter = adapter
@@ -71,26 +71,5 @@ class LiveEventsFragment : Fragment() {
     override fun onDestroyView() {
         super.onDestroyView()
         _binding = null
-    }
-}
-
-class BookcaseViewPagerAdapter(fragment: Fragment) :
-    FragmentStateAdapter(fragment) {
-    private val arrayList: ArrayList<Fragment> = ArrayList()
-
-    fun getItem(position: Int): Fragment {
-        return arrayList[position]
-    }
-
-    fun addFragment(fragment: Fragment) {
-        arrayList.add(fragment)
-    }
-
-    override fun getItemCount(): Int {
-        return arrayList.size
-    }
-
-    override fun createFragment(position: Int): Fragment {
-        return arrayList[position]
     }
 }
