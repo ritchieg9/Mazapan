@@ -16,4 +16,16 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_claro_fragment">Claro fragment</string>
     <string name="hello_fubo_fragment">Fubo fragment</string>
+    
+    <string-array name="region1">
+        <item>Channel 1</item>
+        <item>Channel 2</item>
+        <item>Channel 3</item>
+        <item>Channel 4</item>
+        <item>Channel 5</item>
+        <item>Channel 6</item>
+    </string-array>
+
+
+
 </resources>
