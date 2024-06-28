@@ -69,6 +69,7 @@ class ClaroFragment : Fragment() {
         channelsAdapter =ChannelsAdapters(requireContext(), arrayList!!)
         recyclerView?.adapter = channelsAdapter
 
+
     }
 
     companion object {

@@ -2,16 +2,18 @@ package com.example.mazapan
 
 import android.os.Bundle
 import android.view.Menu
-import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.navigation.NavigationView
+import android.view.View
+import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
-import androidx.drawerlayout.widget.DrawerLayout
-import androidx.appcompat.app.AppCompatActivity
 import com.example.mazapan.databinding.ActivityMainBinding
+import com.google.android.material.navigation.NavigationView
+import com.google.android.material.snackbar.Snackbar
 
 class MainActivity : AppCompatActivity() {
 
@@ -41,6 +43,16 @@ class MainActivity : AppCompatActivity() {
                 R.id.nav_channels, R.id.nav_liveEvents, R.id.nav_settings
             ), drawerLayout
         )
+
+
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            if(destination.id == R.id.nav_settings) {
+                binding.root.findViewById<LinearLayout>(R.id.video_area).setVisibility(View.GONE)
+            } else {
+                binding.root.findViewById<LinearLayout>(R.id.video_area).setVisibility(View.VISIBLE)
+            }
+        }
+
         setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
     }
@@ -53,6 +65,8 @@ class MainActivity : AppCompatActivity() {
 
     override fun onSupportNavigateUp(): Boolean {
         val navController = findNavController(R.id.nav_host_fragment_content_main)
+
+
         return navController.navigateUp(appBarConfiguration) || super.onSupportNavigateUp()
     }
 }

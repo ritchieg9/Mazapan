@@ -1,5 +1,6 @@
 package com.example.mazapan.ui.adapters
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
@@ -10,6 +11,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.example.mazapan.R
 import com.example.mazapan.ui.model.Channel
+
 
 class ChannelsAdapters(var context: Context, var arraList: ArrayList<Channel>) :
     RecyclerView.Adapter<ChannelsAdapters.itemsHolder>() {
@@ -23,13 +25,16 @@ class ChannelsAdapters(var context: Context, var arraList: ArrayList<Channel>) :
         return arraList.size
     }
 
+    @SuppressLint("ResourceAsColor")
     override fun onBindViewHolder(holder: itemsHolder, position: Int) {
        var channelItem:Channel = arraList.get(position)
 
         holder.icons.setImageResource(channelItem.iconsChannels!!)
         holder.channelName.text = channelItem.channelName
 
-        holder.itemView.setOnClickListener{
+        holder.itemView.setOnClickListener { v ->
+            notifyItemChanged(holder.getAdapterPosition())
+//            v.setBackgroundColor(R.color.white)
             Toast.makeText(context,channelItem.channelName, Toast.LENGTH_LONG).show()
         }
     }

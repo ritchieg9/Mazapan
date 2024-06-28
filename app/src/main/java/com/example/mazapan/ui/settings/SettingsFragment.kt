@@ -12,6 +12,7 @@ import com.example.mazapan.databinding.FragmentSettingsBinding
 class SettingsFragment : Fragment() {
 
     private var _binding: FragmentSettingsBinding? = null
+//    private var linearLayout: LinearLayout? = null
 
     // This property is only valid between onCreateView and
     // onDestroyView.
@@ -22,6 +23,8 @@ class SettingsFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
+
+
         val settingsViewModel =
             ViewModelProvider(this).get(SettingsViewModel::class.java)
 
@@ -33,6 +36,12 @@ class SettingsFragment : Fragment() {
             textView.text = it
         }
         return root
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
     }
 
     override fun onDestroyView() {
